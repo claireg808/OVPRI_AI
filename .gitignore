@@ -1,0 +1,12 @@
+Dependencies/
+venv
+data/
+HRPP*
+*.log
+*_logs.json
+.hf_token
+logs/
+__pycache__/
+.chroma
+.vscode/
+package*
