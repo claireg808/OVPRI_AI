@@ -5,14 +5,14 @@
 #SBATCH --qos=short
 #SBATCH --job-name=run_llm
 
-source /home/gillaspiecl/OVPRI_VDB/vdb_venv/bin/activate
+source /home/gillaspiecl/OVPRI_AI/Dependencies/venv/bin/activate
 
-export HUGGINGFACE_HUB_TOKEN=$(cat /home/gillaspiecl/OVPRI_VDB/.hf_token)
+export HUGGINGFACE_HUB_TOKEN=$(cat /home/gillaspiecl/OVPRI_AI/Dependencies/.hf_token)
 hf auth login --token "$HUGGINGFACE_HUB_TOKEN"
 
 # start vLLM in the background
-vllm serve meta-llama/Meta-Llama-3-8B-Instruct \
-    --served-model-name llama3 \
+vllm serve /home/gillaspiecl/OVPRI_AI/Dependencies/Llama3.1-8B-I-FP8 \
+    --served-model-name llama3-fp8 \
     > vllm_out.log 2>&1 &
 
 echo "Waiting for vLLM to start..."

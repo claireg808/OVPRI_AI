@@ -2,13 +2,13 @@
 
 import os
 import textwrap
-from langdetect import detect_langs
 from dotenv import load_dotenv
-from deep_translator import GoogleTranslator
+from langdetect import detect_langs
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
+from deep_translator import GoogleTranslator
 from sentence_transformers import CrossEncoder
+from langchain_huggingface import HuggingFaceEmbeddings
 
 
 load_dotenv()

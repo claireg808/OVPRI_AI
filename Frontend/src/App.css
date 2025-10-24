@@ -1,0 +1,27 @@
+.App {
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #242424;
+  color: white;
+  transition: all 0.5s ease;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #242424;
+  font-family: 'Inter', serif;
+  font-weight: 200;
+}
+
+.App.centered {
+  justify-content: center;
+}

@@ -1,14 +1,14 @@
-import "./App.css";
+import "ChatBot.css";
 import "@fontsource/inter/300.css";
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import user_icon from "./icons/user.jpeg"
-import bot_icon from "./icons/bot.jpeg"
+import user_icon from "/home/gillaspiecl/OVPRI_AI/Frontend/src/icons/user.jpeg"
+import bot_icon from "/home/gillaspiecl/OVPRI_AI/Frontend/src/icons/bot.jpeg"
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 
-function App() {
+function ChatBot() {
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState<{ user: string; bot: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -144,4 +144,4 @@ function App() {
   );
 }
 
-export default App;
+export default ChatBot;

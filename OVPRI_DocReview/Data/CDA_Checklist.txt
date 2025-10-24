@@ -1,0 +1,100 @@
+Checklist for Review of Confidential Disclosure Agreements  
+
+
+I. Introduction and Recitals:
+										
+1. Agreement is with Virginia Commonwealth University (not with PI): Remove any implication that the PI is a party to the agreement. Remove language stating the Investigator “agrees.” VCU should be the party to the agreement, not the medical center or the department.
+* Language to Use: Virginia Commonwealth University, a public institution of higher education, having an address at 800 East Leigh Street, Suite 3200, Richmond, VA 23219 (“Institution”), employer of [Dr. Name].
+* This definition must appear in the section of the agreement that identifies the parties to the contract (typically titled “Parties,” “Background,” or “Introductory Paragraph”).
+
+2. VCU Defined Term: The defined term for VCU cannot be “Business,” “Company,” or something similar. We do not want to imply that VCU is a corporation. Acceptable definitions are things like “Institution,” “University,” or “Recipient.” 
+
+3. Principal Investigator Identification: For internal tracking purposes, ensure the CDA identifies the PI. Remove language stating the Investigator “agrees.”
+* Language to Use: Institution’s employee [Dr. NAME] shall serve as the principal investigator for the Study.
+* Investigator, an employee of VCU, cannot be a Party to the Agreement or “agree” on behalf of VCU, but can confirm as having read and acknowledged their responsibilities hereunder.
+
+4. Purpose is for Evaluation: Ensure the purpose of the agreement is only for us to review/evaluate the sponsor’s confidential information (we can also include the purpose of negotiating the CTA). Anything beyond that will be addressed in a subsequent CTA.
+* Language to Use: INSTITUTION shall receive the INFORMATION for the sole purpose of evaluating its interest in the Study.
+* The sole purpose of this Agreement is to evaluate Sponsor’s Confidential Information to determine whether Institution is interested and/or will be participating in the Sponsor’s research
+
+
+II. Definitions and Core Obligations:
+ 
+5. Defined Term Consistency and Capitalization: Ensure all defined terms are used consistently and correctly capitalized throughout the entire agreement.
+
+6. Marked as Confidential: Sponsor will disclose in writing or provide written confirmation of disclosure and will mark the information with “confidential.” This marking preference is also noted in our Corporate Research Agreement Policy.
+* Language to Use: Sponsor shall make a good faith effort to either mark Confidential Information as “Confidential” or with a similar marking, or if disclosed orally, shall (i) identify information as confidential at the time of disclosure, and (ii) reduce it to writing and mark it as “Confidential” within thirty (30) days of the original disclosure; provided, however, that any information not marked or identified as confidential but that is of such a nature that a reasonable person would assume it to be proprietary and confidential, shall be considered to be “Confidential Information” for the purpose of this Agreement and shall be subject to the restrictions on use and disclosure herein.
+
+7. No Trade Secrets: Remove all references to the disclosure of trade secrets. We cannot accept trade secrets per the Corporate Research Agreement policy. 
+
+8. No Commercial or Industry Standards: We cannot comply with commercial or industry standards and they should be changed to reasonable or academic standards.
+* As an academic institution, VCU cannot agree to commercial or industry standards but can agree to academic, medical, or reasonable standards.
+
+9. No Prior Information: The CDA must only apply to information disclosed on or after the effective date. Strike any language that attempts to include information previously disclosed to VCU.
+* VCU should only be responsible for confidential information disclosed from the effective date of the CDA.
+
+10. No Patent/Copyright Language: We cannot accept language discussing the creation of inventions under the CDA. The sole purpose of the agreement is to read/review their information and determine our interest.
+* Delete references to “ideas,” “trade secrets,” “secret/secrecy,” PHI, or Personal Information
+
+
+III. Term, Termination, and Survival:
+
+11. Term & Termination Included: Ensure the agreement is for a set period of time. We prefer one year.
+* Language to Use: This Agreement will expire one (1) year from the Effective Date set forth above, unless extended by mutual written agreement of the Parties.
+* Alternate Language (clause): This Agreement will expire one (1) year from the Effective Date set forth above, unless extended by mutual written agreement of the Parties. The obligations of confidentiality shall continue for five (5) years beyond the expiration or earlier termination thereof. Either party may terminate this Agreement upon thirty (30) day written notice to the other party.
+
+12. Either Party May Terminate: Termination rights must be the same for both parties. We prefer termination to be available upon thirty days’ notice.
+* Language to Use: Either party may terminate this Agreement upon thirty (30) days written notice to the other party.
+
+13. Retain One Copy: We can agree to return Confidential Information, however we must retain a copy. Please note, this copy will remain with the PI and will not be sent to an attorney’s office.
+* Language to Use: Notwithstanding the foregoing, one (1) copy of the Confidential Information may be retained by Institution for the sole purpose of determining its continuing obligations of confidentiality and non-use under this agreement.
+
+14. Period of Continuing Obligations: Per VCU Corporate Research Agreement policy, the maximum we can hold the information in confidence is either (i) seven years from the expiration or termination of the Agreement, or (ii) ten years from the date of disclosure. **Important: Do not offer both options**
+* Language to Use: The obligations of confidentiality shall continue for five (5) years beyond the expiration or earlier termination thereof. We typically ask for 5 years, but, we can accept 7.
+* Alternate Language: Institution agrees to hold the Confidential Information in confidence for ten (10) years from the date of disclosure of the information.
+
+
+IV. Mandatory VCU Legal/Compliance Inserts:
+
+15. Mandated Disclosure: We must be able to disclose information pursuant to a law, subpoena, or government order. We can only agree to provide notice of the disclosure to the sponsor to the extent permitted by the Mandated Disclosure. We cannot agree to assist the sponsor’s efforts to prevent the Mandated Disclosure; this is a conflict of interest. We must be able to comply with the legal mandate.
+* Language to Use: Notwithstanding any of the foregoing provisions, this Agreement shall not prevent Institution from disclosing Confidential Information that is mandated to be disclosed by law, order, decree, subpoena or other judicial process issued by a court or governmental agency, body or tribunal, including but not limited to the Virginia Freedom of Information Act (FOIA) [§§2.2-3700 – 2.2-3714, Code of Virginia] as amended (“Mandated Disclosure”). In the event of a Mandated Disclosure, Institution will, to the extent permitted by applicable law or by such Mandated Disclosure, (i) give Sponsor as much notice of such disclosure as possible; and (ii) restrict the disclosure to only the minimum information necessary to comply with the request(s).
+* Sponsor can seek to protect confidential information, but VCU cannot agree to assist that process. 
+
+16. No Institution Indemnification Language: We cannot agree to indemnify sponsor, and we can only be “responsible” or “liable” for our personnel to the extent permitted by the Virginia Tort Claims Act. Add the following clause whenever you see VCU will be responsible/liable.
+* Language to Use: Solely as permitted by Virginia law, including, but not limited to the Virginia Tort Claims Act, Section 8.01-195.1 et seq. of the Code of Virginia, as amended, VCU shall be responsible for the negligent acts or omissions of its officers, employees or agents arising out of its obligations under this agreement.  Nothing contained herein shall constitute a waiver of the sovereign immunity of VCU or the Commonwealth of Virginia.  
+* VCU is a publicly funded, sovereign state entity. We are willing to accept responsibility for acts and omissions of our own employees and students, but cannot transfer sovereign immunity to, nor accept liability for, non-state actors.
+
+17. Exclusivity: If a clause discusses VCU’s other contractual obligations or agreements, insert the following.
+* Language to Use: Notwithstanding the foregoing, nothing contained within this Agreement shall impose an obligation of exclusivity on one party by the other. Both parties reserve the right to enter into and participate in other activities (either alone or with a third party) including, but not limited to, clinical trials and sponsored research projects.
+
+
+V. General Provisions/Boilerplate:
+
+18. Governing Law – Virginia: Always add Virginia Law as the governing law (we cannot accept the laws of another state/country). However, we can agree to remain silent - if the sponsor cannot accept Virginia law.
+* Language to Use: The Parties agree that this Agreement shall be governed by the laws of the Commonwealth of Virginia, without regard to the conflicts of law provisions thereof. 
+* Alternate Language (SILENT & SEVERABILITY): The Parties agree to remain silent with respect to governing law. To the extent any provision of this Agreement is prohibited by Virginia law, or is otherwise not authorized by Virginia law, due to Institution’s status as an agency of the Commonwealth of Virginia, such provision is null and void.
+* We cannot agree to comply with rules, policies or guidance outside of Virginia or the US.
+* Delete all mentions of GDPR, EU law, or non-U.S. frameworks.
+* Acceptable references include HIPAA, FOIA, Virginia Code, and U.S. federal/state statutes.
+
+19. Document is All Encompassing: The agreement should contain the entire agreement of the parties. 
+* Language to Use: This Agreement contains the entire understanding among the parties and supersedes all prior or contemporaneous agreements and negotiations relating to the subject matter of this agreement. 
+
+20. Remedy Language: Review the specific clause addressing the sponsor’s rights or legal relief in the event of a breach of the agreement (often referencing remedies, injunctive relief, or specific performance). VCU cannot grant an automatic remedy to the sponsor. Instead, the language must only acknowledge that the sponsor may seek these remedies. No not apply these edits to other sections of the agreement.  
+* Strike all “must” “will” and “shall” from these sections and replace with “may” and “seek”
+* Strike any language that posting of a bond is waived (or other similar waivers by VCU)
+* Strike any language agreeing the sponsor will be entitled to attorney’s fees
+
+21. Terms & Existence: We must be able to disclose the terms & existence of the Agreement due to the Virginia Freedom of Information Act (FOIA) [§§2.2-3700 - 2.2-3705, Code of Virginia]. Remove these restrictions on the initial redline. After pushback, the following language can be added:
+* Language to Use: Notwithstanding the foregoing, Institution shall be free to respond to requests made through § 2.2-3700 et seq. of the Code of Virginia (The Virginia Freedom of Information Act ), as amended without Sponsor approval, and such response shall not be a breach of this Agreement.
+* Alternate Language (qualifying language): “Subject to any limitations imposed by law, including the Virginia Freedom of Information Act (FOIA) §§2.2-3700 - 2.2-3705, Code of Virginia, ….”
+
+22. Signatures: The signatures can be either bilateral (both Sponsor and VCU sign), or unilateral (only VCU signs). If the Sponsor requires the Investigator to sign the agreement, the PI can only sign to acknowledge he/she has read/understands the agreement.
+* Language to Use: READ AND ACKNOWLEDGED: INVESTIGATOR, while not a party to this Agreement, hereby acknowledges that INVESTIGATOR has read this Agreement and understands INVESTIGATOR’S obligations hereunder. 
+
+23. Miscellaneous:
+* Strict Confidentiality: Strike language that says the information will be held in “strict” confidence. Acceptable alternatives include: “hold in confidence”, “maintain confidentiality”, “protect confidential information”
+* Remove “ideas” from the definition of Confidential Information.
+* Confidential In Footer/Header: Ensure there is no stamp of “confidential” or “proprietary” in the header, footer, or a watermark on the document.
+* No Contracts with Employees: We do not accept terms that require our employees sign an agreement being bound to the terms of the CDA because they are already bound by their employment contracts. Language to Use: “…are bound by obligations of confidentiality at least as restrictive as those contained herein.”
+* Insider Trading: If the agreement says we shall not buy or sell, or advise others to buy or sell, the securities of sponsor (or something similar), we can accept it but we must add the following: This section will not restrict Recipient or Personnel or any entity of which Recipient may be a part of, from participating in pooled investment vehicles such as mutual funds. 

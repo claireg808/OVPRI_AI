@@ -1,13 +1,25 @@
-# receive response from the LLM
+## flask
 
+import os
+import sys
 import json
-from flask import Flask, request, jsonify
-from rag import answer_query
 from collections import defaultdict
+from flask import Flask, request, jsonify
+
+rag_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview')
+redline_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/rag')
+sys.path.append(rag_directory) 
+sys.path.append(redline_directory) 
+
+import answer_query
+import redline
+
 
 app = Flask(__name__)
 sessions = defaultdict(list)
 
+
+# RAG
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
@@ -26,6 +38,18 @@ def chat():
         f.write(json.dumps(log_entry) + '\n')
 
     return jsonify({'response': response})
+
+
+# Redline
+@app.route('/redline', methods=['POST'])
+def redline():
+    data = request.get_json()
+    document = data.get('document')
+
+    redlined_document = redline(document)
+
+    return jsonify({'redline': redlined_document})
+
 
 # add CORS headers to all responses
 @app.after_request
