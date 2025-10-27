@@ -11,7 +11,7 @@ export HUGGINGFACE_HUB_TOKEN=$(cat /home/gillaspiecl/OVPRI_AI/Dependencies/.hf_t
 hf auth login --token "$HUGGINGFACE_HUB_TOKEN"
 
 # start vLLM in the background
-vllm serve /home/gillaspiecl/OVPRI_AI/Dependencies/Llama3.1-8B-I-FP8 \
+vllm serve "Llama3.1-8B-I-FP8" \
     --served-model-name llama3-fp8 \
     > vllm_out.log 2>&1 &
 
@@ -20,7 +20,7 @@ sleep 60
 echo "Launching frontend"
 
 # start frontend
-flask --app receive_messages run \
+flask --app /home/gillaspiecl/OVPRI_AI/Frontend/flask_session.py run \
     --debug \
     --host=0.0.0.0 \
     --port=5000
