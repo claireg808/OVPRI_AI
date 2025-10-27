@@ -1,4 +1,5 @@
-import "ChatBot.css";
+import "./ChatBot.css";
+import "/home/gillaspiecl/OVPRI_AI/Frontend/src/App.css";
 import "@fontsource/inter/300.css";
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
@@ -95,41 +96,42 @@ function ChatBot() {
   };
 
   return (
-    <div className={`App ${chatHistory.length === 0 ? "centered" : ""}`}>
-      <div className={`chat-wrapper ${isChatActive ? "active" : ""}`}>
-        <h1 className="chat-header">OVPRI AI Assistant</h1>
-        <div className="chat-box" ref={chatBoxRef}>
+  <div className={`App ${isChatActive ? "" : "centered"}`}>
+    <div className={`chat-wrapper ${isChatActive ? "active" : ""}`}>
+      <h1 className="chat-header">OVPRI AI Chatbot</h1>
+
+      <div className="chat-box" ref={chatBoxRef}>
         {chatHistory.map((chat, index) => (
-        <div key={index}>
-        <div className="chat-message user">
-          <img src={user_icon} width="40" alt="user" />
-          <p>{chat.user}</p>
-        </div>
-      {chat.bot ? (
-        <div className="chat-message bot">
-          <img src={bot_icon} width="40" alt="bot" />
-          <div className="chat-bubble">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {chat.bot}
-            </ReactMarkdown>
+          <div key={index}>
+            <div className="chat-message user">
+              <img src={user_icon} width="40" alt="user" />
+              <p>{chat.user}</p>
+            </div>
+
+            {chat.bot ? (
+              <div className="chat-message bot">
+                <img src={bot_icon} width="40" alt="bot" />
+                <div className="chat-bubble">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {chat.bot}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            ) : isLoading && index === chatHistory.length - 1 ? (
+              <div className="chat-message bot">
+                <img src={bot_icon} width="40" alt="bot" />
+                <div className="chat-bubble loading">
+                  Thinking<span className="dots"></span>
+                </div>
+              </div>
+            ) : null}
           </div>
-        </div>
-      ) : isLoading && index === chatHistory.length - 1 ? (
-        // show thinking
-        <div className="chat-message bot">
-          <img src={bot_icon} width="40" alt="bot" />
-          <div className="chat-bubble loading">
-            Thinking<span className="dots"></span>
-          </div>
-        </div>
-      ) : null}
+        ))}
       </div>
-      ))}
-    </div>
-    </div>
-    <div className="justify-input">
+
       <form onSubmit={handleSubmit} className="chat-border">
-        <textarea className="chat-input"
+        <textarea
+          className="chat-input"
           ref={textareaRef}
           value={message}
           rows={1}
@@ -139,8 +141,8 @@ function ChatBot() {
         />
         <button type="submit" className="chat-submit">Send</button>
       </form>
-      </div>
     </div>
+  </div>
   );
 }
 

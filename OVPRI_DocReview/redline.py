@@ -20,14 +20,15 @@ with open('Data/CDA_Checklist.txt', 'r', encoding='utf-8') as f:
         checklist = f.read()
 
 
-def redline(document):
+def redline(document, type):
     # generate prompt
     with open('doc_review_prompt.txt', 'r', encoding='utf-8') as f:
         prompt_template_txt = f.read()
 
-    full_prompt = prompt_template_txt \
-                .replace('{CHECKLIST}', checklist) \
-                .replace('{DOCUMENT}', document)
+    if type == 'Confidentiality Agreement':
+        full_prompt = prompt_template_txt \
+                    .replace('{CHECKLIST}', checklist) \
+                    .replace('{DOCUMENT}', document)
     
     # invoke LLM
     response = llm.invoke(full_prompt).content

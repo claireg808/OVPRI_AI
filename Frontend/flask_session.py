@@ -43,12 +43,15 @@ def chat():
 # Redline
 @app.route('/redline', methods=['POST'])
 def redline():
-    data = request.get_json()
-    document = data.get('document')
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file uploaded'}), 400
 
-    redlined_document = redline(document)
+    file = request.files['file']
+    doc_type = request.form.get('type')
 
-    return jsonify({'redline': redlined_document})
+    redlined_text = redline(file.read().decode('utf-8'), doc_type)
+
+    return jsonify({'redline': redlined_text})
 
 
 # add CORS headers to all responses
