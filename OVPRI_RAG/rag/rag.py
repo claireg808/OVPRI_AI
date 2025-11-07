@@ -11,7 +11,7 @@ from sentence_transformers import CrossEncoder
 from langchain_huggingface import HuggingFaceEmbeddings
 
 
-load_dotenv()
+load_dotenv("/home/gillaspiecl/OVPRI_AI/Dependencies/.env")
 
 # initialize embedding model & llm
 embedding_model_name = os.environ['EMBEDDING_MODEL']
@@ -30,7 +30,7 @@ llm = ChatOpenAI(
 # access stored vector database
 vectorstore = Chroma(
     collection_name='hrpp_docs',
-    persist_directory='/home/gillaspiecl/OVPRI_VDB/data/chroma_db',
+    persist_directory='/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/data/chroma_db',
     embedding_function=embedding_model
 )
 
@@ -85,7 +85,7 @@ def answer_query(query: str, history: list[str]) -> str:
     history_text = '\n'.join([f'User: {q}' for q in history]) if history else ''
 
     # generate prompt
-    with open('prompt_template.txt', 'r', encoding='utf-8') as f:
+    with open('/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/rag/prompt_template.txt', 'r', encoding='utf-8') as f:
         prompt_template_txt = f.read()
 
     full_prompt = prompt_template_txt \
@@ -96,7 +96,7 @@ def answer_query(query: str, history: list[str]) -> str:
     # translate prompt if query language is not English
     detection = detect_langs(query)[0]
     lang, confidence = detection.lang, detection.prob
-    if lang != 'en' and confidence>0.90 and len(query)>10:
+    if lang != 'en' and confidence>0.90 and len(query.split(' '))>10:
         prompt_sections = textwrap.wrap(full_prompt, 4500)
         result = ''
         # retrieve relevant context & translate to query language

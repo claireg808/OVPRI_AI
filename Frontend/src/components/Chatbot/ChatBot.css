@@ -38,7 +38,7 @@
 
 .chat-box {
   flex: 1;
-  width: 70vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -116,7 +116,7 @@ p {
   align-items: flex-end; /* keeps button at the bottom of text area */
   gap: 0.5rem;
   padding: 1rem;
-  width: 70vw;
+  width:70vw;
   box-sizing: border-box;
   overflow: hidden;
   flex-shrink: 0;

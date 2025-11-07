@@ -15,39 +15,40 @@ const RedLine: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!file) {
-      alert("Please upload a document.");
-      return;
-    }
+  if (!file) {
+    alert("Please upload a document.");
+    return;
+  }
 
-    setIsProcessing(true);
-    setResult(null);
+  setIsProcessing(true);
+  setResult(null);
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("type", docType);
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("type", docType);
 
-    try {
-      const response = await axios.post("http://localhost:5001/redline", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+  try {
+    const response = await axios.post("http://localhost:5001/redline", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
-      setResult(response.data.redline); // expecting your Flask endpoint to return { redline: "..." }
-    } catch (error) {
-      console.error("Error submitting document:", error);
-      setResult("An error occurred while processing your document.");
-    } finally {
-      setIsProcessing(false);
-    }
-  };
+    setResult(response.data.redline); // expecting your Flask endpoint to return { redline: "..." }
+  } catch (error) {
+    console.error("Error submitting document:", error);
+    setResult("An error occurred while processing your document.");
+  } finally {
+    setIsProcessing(false);
+  }
+};
 
-  return (
+
+return (
     <div className="App">
+      <h1 className="redline-header">OVPRI AI Document Review</h1>
       <div className="redline-container">
-        <h1 className="redline-header">OVPRI AI Document Review</h1>
 
         {!isProcessing && !result && (
           <form className="redline-form" onSubmit={handleSubmit}>
@@ -61,8 +62,6 @@ const RedLine: React.FC = () => {
                 <option value="Confidentiality Agreement">
                   Confidentiality Agreement
                 </option>
-                <option value="Data Use Agreement">Data Use Agreement</option>
-                <option value="Research Agreement">Research Agreement</option>
               </select>
             </label>
 
@@ -70,7 +69,7 @@ const RedLine: React.FC = () => {
               Upload:
               <input
                 type="file"
-                accept=".doc,.docx,.pdf,.txt"
+                accept=".doc,.docx,.pdf"
                 className="redline-upload"
                 onChange={handleFileChange}
               />

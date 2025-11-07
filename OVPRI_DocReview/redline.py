@@ -1,36 +1,62 @@
 ## Produce a revised "redlined" version of a user's provided document
 
+import io
 import os
+import re
+import magic
+import docx2txt
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+from pdfminer.high_level import extract_text
 
 
 load_dotenv()
 
-
+# initialize LLM
 llm = ChatOpenAI(
     base_url=os.environ['BASE_URL'],
     api_key='dummy-key',
-    model=os.environ['MODEL']
+    model=os.environ['MODEL'],
+    temperature=0.2
 )
 
+# read checklist
+with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/CDA_Checklist.txt', 'r', encoding='utf-8') as f:
+    checklist = f.read()
 
-# read in checklist
-with open('Data/CDA_Checklist.txt', 'r', encoding='utf-8') as f:
-        checklist = f.read()
+# read policy
+with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/Corporate_Research_Agreements_Policy.txt', 'r', encoding='utf-8') as f:
+    policy = f.read()
 
+# read redline prompt
+with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/doc_review_prompt.txt', 'r', encoding='utf-8') as f:
+    redline_prompt_txt = f.read()
 
-def redline(document, type):
-    # generate prompt
-    with open('doc_review_prompt.txt', 'r', encoding='utf-8') as f:
-        prompt_template_txt = f.read()
+# produce redline version of uploaded document
+def redline_document(document, type):
+    # read document type and reset file pointer
+    file_type = magic.from_buffer(document.read(2048))
+    document.seek(0)
 
+    if 'pdf' in file_type.lower():  # .pdf
+        pdf_bytes = io.BytesIO(document.read())
+        text = extract_text(pdf_bytes)
+    else:  # .docx
+        try:
+            text = docx2txt.process(document)
+        except:
+            return 'Please upload in either .pdf or .docx format.', {'error': 'Incorrect file type'}
+
+    # generate redline prompt
+    words = str(int(len(text.split()) * 1.2))
     if type == 'Confidentiality Agreement':
-        full_prompt = prompt_template_txt \
+        redline_prompt = redline_prompt_txt \
+                    .replace('{POLICIES}', policy) \
                     .replace('{CHECKLIST}', checklist) \
-                    .replace('{DOCUMENT}', document)
+                    .replace('{DOCUMENT}', text) \
+                    .replace('{WORDS}', words)
     
-    # invoke LLM
-    response = llm.invoke(full_prompt).content
+    # invoke LLM for redlined section
+    redline = llm.invoke(redline_prompt).content
 
-    return response
+    return redline

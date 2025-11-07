@@ -6,13 +6,12 @@ import json
 from collections import defaultdict
 from flask import Flask, request, jsonify
 
-rag_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview')
-redline_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/rag')
+rag_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview') 
+redline_directory = os.path.abspath('/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/rag') 
 sys.path.append(rag_directory) 
 sys.path.append(redline_directory) 
-
-import answer_query
-import redline
+from rag import answer_query 
+from redline import redline_document
 
 
 app = Flask(__name__)
@@ -34,7 +33,7 @@ def chat():
         history=sessions[session_id][:-1]
     )
 
-    with open('/home/gillaspiecl/OVPRI_VDB/logs/rag_logs.jsonl', 'a', encoding='utf-8') as f:
+    with open('/home/gillaspiecl/OVPRI_AI/OVPRI_RAG/logs/rag_logs.jsonl', 'a', encoding='utf-8') as f:
         f.write(json.dumps(log_entry) + '\n')
 
     return jsonify({'response': response})
@@ -49,7 +48,7 @@ def redline():
     file = request.files['file']
     doc_type = request.form.get('type')
 
-    redlined_text = redline(file.read().decode('utf-8'), doc_type)
+    redlined_text = redline_document(file, doc_type)
 
     return jsonify({'redline': redlined_text})
 

@@ -11,4 +11,4 @@ __pycache__/
 .vscode/
 package*
 node_modules/
-Llama*
+*Llama*

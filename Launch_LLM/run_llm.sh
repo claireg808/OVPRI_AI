@@ -4,15 +4,17 @@
 #SBATCH --output=launch_out.log
 #SBATCH --qos=short
 #SBATCH --job-name=run_llm
+#SBATCH --time=04:00:00
 
 source /home/gillaspiecl/OVPRI_AI/Dependencies/venv/bin/activate
 
-export HUGGINGFACE_HUB_TOKEN=$(cat /home/gillaspiecl/OVPRI_AI/Dependencies/.hf_token)
-hf auth login --token "$HUGGINGFACE_HUB_TOKEN"
+# export HUGGINGFACE_HUB_TOKEN=$(cat /home/gillaspiecl/OVPRI_AI/Dependencies/.hf_token)
+# hf auth login --token "$HUGGINGFACE_HUB_TOKEN"
 
 # start vLLM in the background
-vllm serve "Llama3.1-8B-I-FP8" \
-    --served-model-name llama3-fp8 \
+vllm serve "Meta-Llama-3.1-8B-Instruct-AWQ-INT4" \
+    --served-model-name llama3 \
+    --gpu-memory-utilization 0.8 \
     > vllm_out.log 2>&1 &
 
 echo "Waiting for vLLM to start..."
