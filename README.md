@@ -13,7 +13,7 @@ To launch the frontend:
 > npm run dev
 
 On your local machine's terminal, open a port into Hickory:  
-Note: Do not close the terminal window.  
+* Note: Do not close the terminal window.  
 > ssh -L 5001:localhost:5000 your-vcu-username@hickory.cs.vcu.edu
 
 Access the website at the local URL.
@@ -31,7 +31,7 @@ The RAG tool creates the Chatbot portion of the website
 
 ### Pre-Processing
 To convert .pdf and .docx documents to .txt, run 'convert_formats.py':  
-Note: Either change the expected path name, or store your source documents under 'OVPRI_RAG/data/HRPP'.
+* Note: Either change the expected path name, or store your source documents under 'OVPRI_RAG/data/HRPP'.
 > python convert_formats.py
 
 To normalize these documents, run 'normalize.py':  
@@ -43,4 +43,4 @@ To embed these documents into a local Chroma Vector Database, launch the LLM and
 
 ## Redline
 The Redline tool creates the Document Review portion of the website
-> Ensure the approproate policies and checklists are stored in OVPRI_DocReview/data
+* Ensure the approproate policies and checklists are stored in OVPRI_DocReview/data
