@@ -5,6 +5,7 @@ import os
 import re
 import magic
 import docx2txt
+from docx import Document
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from pdfminer.high_level import extract_text
@@ -32,6 +33,26 @@ with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/Corporate_Research_Ag
 with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/doc_review_prompt.txt', 'r', encoding='utf-8') as f:
     redline_prompt_txt = f.read()
 
+# read redline prompt
+with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/second_pass_prompt.txt', 'r', encoding='utf-8') as f:
+    revision_prompt_txt = f.read()
+
+# format as doc
+def format(text):
+    document = Document()
+
+    title = text.split('\n')[0]
+
+    document.add_heading(title, level=1)
+
+    body_text = text.split('\n')[1:]
+
+    for paragraph in body_text:
+        document.add_paragraph(paragraph)
+
+    return document
+
+
 # produce redline version of uploaded document
 def redline_document(document, type):
     # read document type and reset file pointer
@@ -56,7 +77,21 @@ def redline_document(document, type):
                     .replace('{DOCUMENT}', text) \
                     .replace('{WORDS}', words)
     
-    # invoke LLM for redlined section
-    redline = llm.invoke(redline_prompt).content
+        # invoke LLM for redlined section
+        redline = llm.invoke(redline_prompt).content
 
-    return redline
+        revision_prompt = revision_prompt_txt \
+                    .replace('{POLICIES}', policy) \
+                    .replace('{CHECKLIST}', checklist) \
+                    .replace('{DOCUMENT}', redline) \
+                    .replace('{WORDS}', words)
+        
+        final_review = llm.invoke(revision_prompt).content
+
+    redline_doc = format(redline)
+    final_doc = format(final_review)
+
+    redline_doc.save('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/AI_Redline_Test.docx')
+    final_doc.save('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/AI_Redline_Final_Test.docx')
+
+    return final_review
