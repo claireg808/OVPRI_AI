@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from pdfminer.high_level import extract_text
 
-
 load_dotenv()
 
 # initialize LLM
