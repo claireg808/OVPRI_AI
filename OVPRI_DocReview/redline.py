@@ -36,6 +36,27 @@ with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/doc_review_prompt.txt', 'r
 with open('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/second_pass_prompt.txt', 'r', encoding='utf-8') as f:
     revision_prompt_txt = f.read()
 
+# split into chunks
+def split(text):
+    # normalize and split
+    text = re.sub(r'Page\s*\d.*\d', ' ', text)
+    text = re.sub(r'\s*\n\s*', r'\n\n', text)
+    chunks = re.split(r'(?=\b\d+\.)', text)
+
+    # keep to 10 chunks or less - reduce # of llm calls
+    while len(chunks) > 10:
+        combined_pairs = []
+        for i in range(0, len(chunks), 2):
+            if i + 1 < len(chunks):
+                # combine pairs into single chunk
+                combined_pairs.append(chunks[i] + chunks[i+1])
+            else:
+                # odd number of chunks
+                combined_pairs.append(chunks[i]) 
+        chunks = combined_pairs
+
+    return chunks
+
 # format as doc
 def format(text):
     document = Document()
@@ -67,27 +88,34 @@ def redline_document(document, type):
         except:
             return 'Please upload in either .pdf or .docx format.', {'error': 'Incorrect file type'}
 
-    # generate redline prompt
-    words = str(int(len(text.split()) * 1.2))
-    if type == 'Confidentiality Agreement':
-        redline_prompt = redline_prompt_txt \
-                    .replace('{POLICIES}', policy) \
-                    .replace('{CHECKLIST}', checklist) \
-                    .replace('{DOCUMENT}', text) \
-                    .replace('{WORDS}', words)
-    
-        # invoke LLM for redlined section
-        redline = llm.invoke(redline_prompt).content
+    text_chunks = split(text)
 
-        revision_prompt = revision_prompt_txt \
-                    .replace('{POLICIES}', policy) \
-                    .replace('{CHECKLIST}', checklist) \
-                    .replace('{DOCUMENT}', redline) \
-                    .replace('{WORDS}', words)
+    full_redline = ''
+    for chunk in text_chunks:
+        # generate redline prompt
+        chunk_word_count = str(int(len(chunk) * 1.1))
+        if type == 'Confidentiality Agreement':
+            redline_prompt = redline_prompt_txt \
+                        .replace('{POLICIES}', policy) \
+                        .replace('{CHECKLIST}', checklist) \
+                        .replace('{DOCUMENT}', text) \
+                        .replace('{WORDS}', chunk_word_count)
         
-        final_review = llm.invoke(revision_prompt).content
+            # invoke LLM for redlined section
+            chunk_redline = llm.invoke(redline_prompt).content
 
-    redline_doc = format(redline)
+            full_redline += chunk_redline
+
+    full_word_count = str(int(len(text) * 1.2))
+    revision_prompt = revision_prompt_txt \
+                .replace('{POLICIES}', policy) \
+                .replace('{CHECKLIST}', checklist) \
+                .replace('{DOCUMENT}', full_redline) \
+                .replace('{WORDS}', full_word_count)
+    
+    final_review = llm.invoke(revision_prompt).content
+
+    redline_doc = format(final_review)
     final_doc = format(final_review)
 
     redline_doc.save('/home/gillaspiecl/OVPRI_AI/OVPRI_DocReview/data/AI_Redline_Test.docx')
